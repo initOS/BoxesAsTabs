@@ -16,6 +16,9 @@
 #tab-bar a.active {
     background-color: #c8c8e8;
 }
+#tab-bar a span {
+    font-size: 80%;
+}
 table.attachments {
     width: 100%;
 }
