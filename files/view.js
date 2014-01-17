@@ -43,7 +43,7 @@ $(document).ready(function() {
     divs.bugnote_add.hide();
     // move attachments in DOM to make it available as a tab
     var originalAttachment = $('#attachments').closest('tr').detach();
-    divs.attachments = $('<table class="attachments">').insertBefore(divs.relationships).append(originalAttachment);
+    divs.attachments = $('<table class="attachments">').insertAfter(divs.relationships).append(originalAttachment);
 
 
     // kill whitespace
