@@ -1,0 +1,21 @@
+#tab-bar {
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+#tab-bar a {
+    padding: 0.5em 2em 0.5em;
+    background-color: #ddd;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    text-decoration: none;
+    color: #000;
+}
+#tab-bar a + a {
+    border-left: 1px solid #aaa;
+}
+#tab-bar a.active {
+    background-color: #c8c8e8;
+}
+table.attachments {
+    width: 100%;
+}
