@@ -47,11 +47,8 @@ $(document).ready(function() {
     // move links in DOM to display it before notes
     var originalLinks = $('#linkcollection_open').detach();
     if (originalLinks.length > 0){
-    	divs.linkcollection = originalLinks.insertBefore('#bugnotes');
-    } 
-    
-    
-    
+        divs.linkcollection = originalLinks.insertBefore('#bugnotes');
+    }
 
     // kill whitespace
 
@@ -82,13 +79,13 @@ $(document).ready(function() {
         }
     };
     var remove_closed = function(){
-    	for (var k in divs){
-    		if (k != 'attachments'){
-    			$('#'+k+'_closed').hide();
-    		    $('#'+k+'_open .form-title a').remove();
-    		    $('#'+k+'_open .form-title').text($.trim($('#'+k+'_open .form-title').text()));
-    		}
-    	}
+        for (var k in divs){
+            if (k != 'attachments'){
+                $('#'+k+'_closed').hide();
+                $('#'+k+'_open .form-title a').remove();
+                $('#'+k+'_open .form-title').text($.trim($('#'+k+'_open .form-title').text()));
+            }
+        }
     };
     $(tabbar).insertBefore(divs.relationships).children('a').click(function(ev){
         show_tab(ev.target.id.substring(5));
