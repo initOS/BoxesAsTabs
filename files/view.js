@@ -35,8 +35,8 @@ $(document).ready(function() {
     var divs = {};
     divs.relationships = $('#relationships_open');
     divs.relationships.hide();
-    divs.upload = $('#upload_form_open');
-    divs.upload.hide();
+    divs.upload_form = $('#upload_form_open');
+    divs.upload_form.hide();
     divs.monitoring = $('#monitoring_open');
     divs.monitoring.hide();
     divs.bugnote_add = $('#bugnote_add_open');
@@ -44,7 +44,14 @@ $(document).ready(function() {
     // move attachments in DOM to make it available as a tab
     var originalAttachment = $('#attachments').closest('tr').detach();
     divs.attachments = $('<table class="attachments">').insertAfter(divs.relationships).append(originalAttachment);
-
+    // move links in DOM to display it before notes
+    var originalLinks = $('#linkcollection_open').detach();
+    if (originalLinks.length > 0){
+    	divs.linkcollection = originalLinks.insertBefore('#bugnotes');
+    } 
+    
+    
+    
 
     // kill whitespace
 
@@ -56,9 +63,10 @@ $(document).ready(function() {
     // create tab-bar
 
     var tabbar = '<div id="tab-bar">' + 
-                    '<a id="show-bugnote_add" href="#">Notiz hinzufügen <span></span></a>' + 
-                    '<a id="show-attachments" href="#">Angehängte Dateien <span></span></a>' + 
-                    '<a id="show-upload" href="#">Datei Upload <span></span></a>' + 
+                    '<a id="show-bugnote_add" href="#">Notiz hinzufügen <span></span></a>';
+    if (divs.linkcollection){ tabbar = tabbar + '<a id="show-linkcollection" href="#">Links <span></span></a>';}
+    tabbar = tabbar +'<a id="show-attachments" href="#">Angehängte Dateien <span></span></a>' + 
+                    '<a id="show-upload_form" href="#">Datei Upload <span></span></a>' + 
                     '<a id="show-relationships" href="#">Beziehungen <span></span></a>' + 
                     '<a id="show-monitoring" href="#">Beobachter <span></span></a>' + 
                  '</div>';
@@ -72,6 +80,15 @@ $(document).ready(function() {
                 $('#show-' + k).addClass('active');
             }
         }
+    };
+    var remove_closed = function(){
+    	for (var k in divs){
+    		if (k != 'attachments'){
+    			$('#'+k+'_closed').hide();
+    		    $('#'+k+'_open .form-title a').remove();
+    		    $('#'+k+'_open .form-title').text($.trim($('#'+k+'_open .form-title').text()));
+    		}
+    	}
     };
     $(tabbar).insertBefore(divs.relationships).children('a').click(function(ev){
         show_tab(ev.target.id.substring(5));
@@ -108,7 +125,7 @@ $(document).ready(function() {
         }
     }
 
-
+    remove_closed();
     // initially open the "add note" tab
 
     show_tab('bugnote_add');
