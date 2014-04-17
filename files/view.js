@@ -46,9 +46,7 @@ $(document).ready(function() {
     divs.attachments = $('<table class="attachments">').insertAfter(divs.relationships).append(originalAttachment);
     // move links in DOM to display it before notes
     var originalLinks = $('#linkcollection_open').detach();
-    if (originalLinks.length > 0){
-        divs.linkcollection = originalLinks.insertBefore('#bugnotes');
-    }
+    divs.linkcollection = originalLinks.insertBefore('#bugnotes');
 
     // kill whitespace
 
@@ -61,7 +59,7 @@ $(document).ready(function() {
 
     var tabbar = '<div id="tab-bar">' + 
                     '<a id="show-bugnote_add" href="#">Notiz hinzufügen <span></span></a>';
-    if (divs.linkcollection){ tabbar = tabbar + '<a id="show-linkcollection" href="#">Links <span></span></a>';}
+    if (divs.linkcollection.length > 0){ tabbar = tabbar + '<a id="show-linkcollection" href="#">Links <span></span></a>';}
     tabbar = tabbar +'<a id="show-attachments" href="#">Angehängte Dateien <span></span></a>' + 
                     '<a id="show-upload_form" href="#">Datei Upload <span></span></a>' + 
                     '<a id="show-relationships" href="#">Beziehungen <span></span></a>' + 
