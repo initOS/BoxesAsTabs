@@ -112,6 +112,11 @@ $(document).ready(function() {
     divs.monitoring.count = function() {
         return divs.monitoring.find("a[href*='view_user_page.php']").size();
     };
+    divs.linkcollection.count = function() {
+        return divs.linkcollection.find("td.linkcollection-links").size();
+    }
+    
+    remove_closed();
     for (var k in divs) {
         var method = divs[k].count;
         if (!method)
@@ -122,7 +127,6 @@ $(document).ready(function() {
         }
     }
 
-    remove_closed();
     // initially open the "add note" tab
 
     show_tab('bugnote_add');
