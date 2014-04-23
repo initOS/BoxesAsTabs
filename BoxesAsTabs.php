@@ -18,17 +18,17 @@
 */
 
 class BoxesAsTabsPlugin extends MantisPlugin {
- 
+
 	function register() {
 		$this->name        = 'BoxesAsTabs';
 		$this->description = 'Re-arranges some of the cluttered boxes on the view.php-page into tabs.';
-		$this->version     = '0.1';
+		$this->version     = '0.2';
 		$this->requires    = array('MantisCore'       => '1.2.0', 'jQuery' => '1.6');
 		$this->author      = 'Thomas Rehn';
 		$this->contact     = 'thomas.rehn-at-initos.com';
 		$this->url         = 'http://www.initos.com';
 	}
- 
+
 
 	function hooks() {
 		return array(
